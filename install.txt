@@ -1,4 +1,18 @@
 #!/bin/bash
-echo "Hello, world!"
-read -p "What is your name? " name
-echo "Hello, ${name}!"
+# execute command: bash <(curl -s https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt)
+# execute command: bash <(wget -O - https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt)
+
+read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
+sudo hostnamectl set-hostname $hostname
+
+echo "Atualizando base de pacotes APT"
+sudo apt-get update
+
+echo "atualizando pacotes instalados de sistema"
+sudo apt-get -y upgrade
+
+echo "instalando pacotes basicos do sistema"
+sudo apt-get -y install vim git curl wget
+
+echo "instalando Ansible"
+sudo apt-get -y install ansible
