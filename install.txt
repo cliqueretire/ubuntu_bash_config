@@ -24,11 +24,11 @@ echo "instalando Modulos adicionais do Ansible"
 ansible-galaxy collection install community.general
 
 echo "creating alias"
-echo "alias ansible-host-config=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app\"" >> ~/.bashrc
+echo "alias ansible-host-config=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -e github_user_token=$github_user_token -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app\"" >> ~/.bashrc
 echo "alias ansible-app-update=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t updated\"" >> ~/.bashrc
 echo "alias ansible-app-tag=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts\"" >> ~/.bashrc
 
-ansible-pull -o -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
+ansible-pull -o -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -e github_user_token=$github_user_token -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
 
 echo "Reiniciando host em 10 segundos (Precione Ctrl+C para abortar)"
 sleep 10
