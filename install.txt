@@ -2,6 +2,8 @@
 # execute command: bash <(curl -s https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt)
 # execute command: bash <(wget -O - https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt)
 
+github_user_token=marcioxavierclique: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
+
 read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
 sudo hostnamectl set-hostname $hostname
 
@@ -23,8 +25,12 @@ echo "instalando Modulos adicionais do Ansible"
 ansible-galaxy collection install community.general
 
 echo "creating alias"
-echo "alias ansible-host-config=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app\"" >> ~/.bashrc
-echo "alias ansible-app-update=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t updated\"" >> ~/.bashrc
-echo "alias ansible-app-tag=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts\"" >> ~/.bashrc
+echo "alias ansible-host-config=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app\"" >> ~/.bashrc
+echo "alias ansible-app-update=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t updated\"" >> ~/.bashrc
+echo "alias ansible-app-tag=\"ansible-pull -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts\"" >> ~/.bashrc
 
-ansible-pull -o -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
+ansible-pull -o -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
+
+echo "Reiniciando host em 10 segundos (Precione Ctrl+C para abortar)"
+sleep 10
+sudo reboot
