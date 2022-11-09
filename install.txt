@@ -1,8 +1,7 @@
 #!/bin/bash
-# execute command: bash <(curl -s https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt | bash -s [GITHUB_USER_TOKEN])
-# execute command: bash <(wget -O - https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt | bash -s [GITHUB_USER_TOKEN])
+# execute command: wget -qO install.sh https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt | bash ./install.sh [GITHUB_USER_TOKEN]
 
-github_user_token=$0
+github_user_token=$1
 
 read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
 sudo hostnamectl set-hostname $hostname
