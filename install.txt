@@ -20,4 +20,7 @@ sudo apt-get -y install ansible
 echo "instalando Modulos adicionais do Ansible"
 ansible-galaxy collection install community.general
 
-ansible-pull -o -U ansible-pull -o -U https://@github.com/cliqueretire/ansible_playbooks.git
+ansible-pull -o -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
+
+echo "rebooting machine"
+sudo reboot
