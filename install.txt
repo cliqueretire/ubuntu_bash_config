@@ -2,6 +2,7 @@
 # execute command: wget -qO install.sh https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt | bash ./install.sh [GITHUB_USER_TOKEN]
 
 github_user_token=$1
+reboot_time=30
 
 read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
 sudo hostnamectl set-hostname $hostname
@@ -30,6 +31,6 @@ echo "alias ansible-app-tag=\"ansible-pull -U https://$github_user_token@github.
 
 ansible-pull -o -U https://$github_user_token@github.com/cliqueretire/ansible_playbooks.git -e "github_user_token=$github_user_token" -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
 
-echo "Reiniciando host em 10 segundos (Precione Ctrl+C para abortar)"
-sleep 10
+echo "Reiniciando host em $reboot_time segundos (Precione Ctrl+C para abortar)"
+sleep $reboot_time
 sudo reboot
