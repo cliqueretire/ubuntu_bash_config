@@ -22,7 +22,12 @@ sudo apt-get -y install ansible
 echo "instalando Modulos adicionais do Ansible"
 ansible-galaxy collection install community.general
 
+echo "creating alias"
+echo "alias ansible-host-config=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app\"" >> ~/.bashrc
+echo "alias ansible-app-update=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t updated\"" >> ~/.bashrc
+echo "alias ansible-app-tag=\"ansible-pull -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts\"" >> ~/.bashrc
+
 ansible-pull -o -U https://marcioxavierclique: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@github.com/cliqueretire/ansible_playbooks.git -i hosts -t base,ubuntu,install_teamviewer,install_zabbix,install_app
 
 echo "rebooting machine"
-sudo reboot
+#sudo reboot
