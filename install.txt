@@ -7,7 +7,7 @@ github_user_token=marcioxavierclique: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
 read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
 sudo hostnamectl set-hostname $hostname
 
-sudo echo "127.0.0.1 $hostname" >> /etc/hosts
+echo "127.0.0.1 $hostname" | sudo tee -a /etc/hosts 
 
 echo "Atualizando base de pacotes APT"
 sudo apt-get update
