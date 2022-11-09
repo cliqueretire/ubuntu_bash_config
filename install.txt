@@ -5,6 +5,8 @@
 read -p "Defina o hostname ex: bobs.0012.cliqueretire: " hostname
 sudo hostnamectl set-hostname $hostname
 
+sudo echo "127.0.0.1 $hostname" >> /etc/hosts
+
 echo "Atualizando base de pacotes APT"
 sudo apt-get update
 
