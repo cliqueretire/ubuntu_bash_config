@@ -1,5 +1,5 @@
 #!/bin/bash
-# execute command: wget -qO install.sh https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt | bash ./install.sh [GITHUB_USER_TOKEN]
+# execute command: wget -qO install.sh https://raw.githubusercontent.com/cliqueretire/ubuntu_bash_config/main/install.txt && bash ./install.sh [GITHUB_USER_TOKEN]
 
 github_user_token=$1
 reboot_time=30
